@@ -295,6 +295,51 @@ class Macros {
                     }, f.access);
                 }
                 
+<<<<<<< HEAD
+=======
+                // add getter/setter property
+                var meta = [];
+                meta.push( { name: ":behaviour", pos: pos, params: [] } );
+                meta.push( { name: ":bindable", pos: pos, params: [] } );
+                for (m in f.meta) {
+                    if (m.name != ":behaviour" && m.name != "behaviour" ) {
+                        meta.push(m);
+                    }
+                }
+                
+                fields.push({
+                    name: f.name,
+                    doc: null,
+                    meta: meta,
+                    access: f.access,
+                    kind: kind,
+                    pos: haxe.macro.Context.currentPos()
+                });
+                // add getter function
+                var code = "function ():" + typeName + " {\n";
+                if (typeName == "Dynamic") {
+                    code += "return behaviours.getDynamic('" + f.name + "');\n";
+                } else {
+                    code += "return behaviours.get('" + f.name + "');\n";
+                }
+                code += "}";
+                var fnGetter = switch (Context.parseInlineString(code, haxe.macro.Context.currentPos()) ).expr {
+                    case EFunction(_, f): f;
+                    case _: throw "false";
+                }
+                fields.push({
+                    name: "get_" + f.name,
+                    doc: null,
+                    meta: [],
+                    access: [APrivate],
+                    kind: FFun(fnGetter),
+                    pos: haxe.macro.Context.currentPos()
+                });
+                     
+                // add setter funtion
+                var code = "function (value:" + typeName + "):" + typeName + " {\n";
+                code += "behaviours.set('" + f.name + "', value);\n";
+>>>>>>> parent of b313aeb... docs
                 if (f.name == valueField) {
                     newField = builder.addSetter(f.name, f.type, macro { // add a normal (Variant) setter but let the binding manager know that the value has changed
                         behaviours.set($v{f.name}, value);

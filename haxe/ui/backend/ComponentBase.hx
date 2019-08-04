@@ -82,7 +82,6 @@ class ComponentBase extends ComponentBounds {
     // Text related
     //***********************************************************************************************************
     private var _textDisplay:TextDisplay;
-    @:dox(group = "Backend")
     public function createTextDisplay(text:String = null):TextDisplay {
         if (_textDisplay == null) {
             _textDisplay = new TextDisplay();
@@ -94,18 +93,15 @@ class ComponentBase extends ComponentBounds {
         return _textDisplay;
     }
 
-    @:dox(group = "Backend")
     public override function getTextDisplay():TextDisplay {
         return createTextDisplay();
     }
 
-    @:dox(group = "Backend")
     public override function hasTextDisplay():Bool {
         return (_textDisplay != null);
     }
     
     private var _textInput:TextInput;
-    @:dox(group = "Backend")
     public function createTextInput(text:String = null):TextInput {
         if (_textInput == null) {
             _textInput = new TextInput();
@@ -117,12 +113,10 @@ class ComponentBase extends ComponentBounds {
         return _textInput;
     }
     
-    @:dox(group = "Backend")
     public override function getTextInput():TextInput {
         return createTextInput();
     }
 
-    @:dox(group = "Backend")
     public override function hasTextInput():Bool {
         return (_textInput != null);
     }
@@ -131,7 +125,6 @@ class ComponentBase extends ComponentBounds {
     // Image related
     //***********************************************************************************************************
     private var _imageDisplay:ImageDisplay;
-    @:dox(group = "Backend")
     public function createImageDisplay():ImageDisplay {
         if (_imageDisplay == null) {
             _imageDisplay = new ImageDisplay();
@@ -140,17 +133,14 @@ class ComponentBase extends ComponentBounds {
         return _imageDisplay;
     }
 
-    @:dox(group = "Backend")
     public override function getImageDisplay():ImageDisplay {
         return createImageDisplay();
     }
 
-    @:dox(group = "Backend")
     public override function hasImageDisplay():Bool {
         return (_imageDisplay != null);
     }
 
-    @:dox(group = "Backend")
     public function removeImageDisplay() {
         if (_imageDisplay != null) {
             _imageDisplay.dispose();
@@ -162,11 +152,9 @@ class ComponentBase extends ComponentBounds {
     // Misc
     //***********************************************************************************************************
     
-    @:dox(group = "Backend")
     public function handlePreReposition() {
     }
 
-    @:dox(group = "Backend")
     public function handlePostReposition() {
     }
     
@@ -176,7 +164,6 @@ class ComponentBase extends ComponentBounds {
     /**
      Gets a property that is associated with all classes of this type
     **/
-    @:dox(group = "Internal")
     public function getClassProperty(name:String):String {
         var v = null;
         if (_classProperties != null) {
@@ -193,7 +180,6 @@ class ComponentBase extends ComponentBounds {
     /**
      Sets a property that is associated with all classes of this type
     **/
-    @:dox(group = "Internal")
     public function setClassProperty(name:String, value:String) {
         if (_classProperties == null) {
             _classProperties = new Map<String, String>();

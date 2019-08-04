@@ -250,9 +250,8 @@ class Component extends ComponentImpl implements IComponentBase implements IVali
     }
 
     //***********************************************************************************************************
-    // Binding related
+    //{Binding related}
     //***********************************************************************************************************
-    @:dox(group = "Internal")
     public var bindingRoot:Bool = false;
     //***********************************************************************************************************
 
@@ -1284,7 +1283,6 @@ class Component extends ComponentImpl implements IComponentBase implements IVali
         dispatch(new UIEvent(UIEvent.MOVE));
     }
 
-    @:dox(group = "Internal")
     public function updateComponentDisplay() {
         if (componentWidth == null || componentHeight == null || componentWidth <= 0 || componentHeight <= 0) {
             return;
